@@ -1,0 +1,30 @@
+{
+    "name": "rstgroup/diagnostics-middleware",
+    "description": "ZendDiagnostics PSR-7 middleware",
+    "type": "library",
+    "keywords": [
+        "middleware",
+        "psr",
+        "psr-7",
+        "diagnostic"
+    ],
+    "require": {
+        "php": "^5.5 || ^7.0",
+        "zendframework/zenddiagnostics": "^1.0",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "zendframework/zend-diactoros": "^1.1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "RstGroup\\DiagnosticsMiddleware\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RstGroup\\DiagnosticsMiddleware\\Test\\": "test/"
+        }
+    }
+}

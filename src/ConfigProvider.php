@@ -19,6 +19,9 @@ final class ConfigProvider
                     RunnerFactory::CHECKS_SERVICE_NAME => RunnerChecksFactory::class,
                     ZendDiagnostics\Runner\Runner::class => RunnerFactory::class,
                 ],
+                'invokables' => [
+                    ResultResponseFactory\JsonResultResponseFactory::class => ResultResponseFactory\JsonResultResponseFactory::class,
+                ],
             ],
         ];
     }

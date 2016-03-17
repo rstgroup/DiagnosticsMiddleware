@@ -12,6 +12,14 @@ final class ConfigProvider
                     'checks' => [],
                 ],
             ],
+            'dependencies' => [
+                'factories' => [
+                    DiagnosticsListMiddleware::class => DiagnosticsListMiddlewareFactory::class,
+                    DiagnosticsListMiddlewareFactory::LIST_SERVICE_NAME => DiagnosticsListFactory::class,
+                    RunnerFactory::CHECKS_SERVICE_NAME => RunnerChecksFactory::class,
+                    ZendDiagnostics\Runner\Runner::class => RunnerFactory::class,
+                ],
+            ],
         ];
     }
 }

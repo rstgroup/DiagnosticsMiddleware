@@ -2,6 +2,14 @@
     "name": "rstgroup/diagnostics-middleware",
     "description": "ZendDiagnostics PSR-7 middleware",
     "type": "library",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Witold Wasiczko",
+            "email": "witold.wasiczko@rst.com.pl",
+            "role": "Developer"
+        }
+    ],
     "keywords": [
         "middleware",
         "psr",

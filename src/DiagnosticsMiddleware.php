@@ -34,6 +34,10 @@ final class DiagnosticsMiddleware
             $checkName = sprintf('%s/%s', $queryParams['filter'], $queryParams['label']);
         }
 
+        if ($checkName === null && !empty($request->getAttribute('filter')) && !empty($request->getAttribute('label'))) {
+            $checkName = sprintf('%s/%s', $request->getAttribute('filter'), $request->getAttribute('label'));
+        }
+
         $resultCollection = $this->runner->run($checkName);
 
         return $this->resultResponseFactory->createResponse($request, $resultCollection);

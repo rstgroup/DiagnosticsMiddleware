@@ -71,4 +71,20 @@ class DiagnosticsMiddlewareTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame($responseFromFactory, $finalResponse);
     }
+
+    public function testRunSingleCheckFromAttribute()
+    {
+        $this->runner->method('run')->with('group-name/label-name')->willReturn($this->collection);
+
+        $this->request = $this->request->withAttribute('filter', 'group-name')->withAttribute('label', 'label-name');
+
+        $responseFromFactory = new Response();
+        $responseFromFactory->getBody()->write('foo');
+
+        $this->resultResponseFactory->method('createResponse')->with($this->request, $this->collection)->willReturn($responseFromFactory);
+
+        $finalResponse = $this->middleware->__invoke($this->request, $this->response);
+
+        $this->assertSame($responseFromFactory, $finalResponse);
+    }
 }

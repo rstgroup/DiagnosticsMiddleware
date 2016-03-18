@@ -32,9 +32,10 @@ final class JsonResultResponseFactory implements ResultResponseFactoryInterface
     {
         $details = new ArrayObject();
 
-        foreach ($resultCollection as $item) {
+        foreach ($resultCollection as $index => $item) {
             $result = $resultCollection[$item];
-            $details[$item->getLabel()] = [
+            $label = sprintf('%d. %s', $index, $item->getLabel());
+            $details[$label] = [
                 'result' => $this->getResultName($result),
                 'message' => $result->getMessage(),
                 'data' => $result->getData(),

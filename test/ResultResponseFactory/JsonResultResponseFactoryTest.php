@@ -53,7 +53,7 @@ class JsonResultResponseFactoryTest extends PHPUnit_Framework_TestCase
 
         $response = $this->resultResponseFactory->createResponse(new ServerRequest(), $collection);
 
-        $expectedJson = '{"details":{"Foo":{"result":"success","message":"Boo","data":null}},"success":1,"warning":0,"failure":0,"skip":0,"unknown":0,"passed":true}';
+        $expectedJson = '{"details":{"0. Foo":{"result":"success","message":"Boo","data":null}},"success":1,"warning":0,"failure":0,"skip":0,"unknown":0,"passed":true}';
 
         $this->assertSame($expectedJson, (string) $response->getBody());
     }
@@ -72,7 +72,7 @@ class JsonResultResponseFactoryTest extends PHPUnit_Framework_TestCase
 
         $response = $this->resultResponseFactory->createResponse(new ServerRequest(), $collection);
 
-        $expectedJson = '{"details":{"Foo":{"result":"success","message":"Boo","data":null},"Baz":{"result":"failure","message":"Bar","data":{"1":2}}},"success":1,"warning":0,"failure":1,"skip":0,"unknown":0,"passed":false}';
+        $expectedJson = '{"details":{"0. Foo":{"result":"success","message":"Boo","data":null},"1. Baz":{"result":"failure","message":"Bar","data":{"1":2}}},"success":1,"warning":0,"failure":1,"skip":0,"unknown":0,"passed":false}';
 
         $this->assertSame($expectedJson, (string) $response->getBody());
     }

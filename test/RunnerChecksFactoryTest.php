@@ -58,7 +58,7 @@ class RunnerChecksFactoryTest extends PHPUnit_Framework_TestCase
     {
         $this->containerCall[] = ['config', [
                 'rstgroup' => [
-                    'diagnostics-middleware' => [
+                    'diagnostics_middleware' => [
                         'checks' => $checks,
                     ],
                 ],

@@ -2,7 +2,7 @@
 
 return [
     'rstgroup' => [
-        'diagnostics-middleware' => [
+        'diagnostics_middleware' => [
             'checks' => [],
         ],
     ],

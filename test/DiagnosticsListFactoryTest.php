@@ -19,7 +19,7 @@ class DiagnosticsListFactoryTest extends PHPUnit_Framework_TestCase
     {
         $this->container->method('get')->with('config')->willReturn([
             'rstgroup' => [
-                'diagnostics-middleware' => [
+                'diagnostics_middleware' => [
                     'checks' => [
                         'group' => [
                             'my-check' => 'service-name',

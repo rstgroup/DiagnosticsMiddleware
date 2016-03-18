@@ -8,7 +8,7 @@ final class RunnerChecksFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        $checksService = $container->get('config')['rstgroup']['diagnostics-middleware']['checks'];
+        $checksService = $container->get('config')['rstgroup']['diagnostics_middleware']['checks'];
         $checkService = [];
 
         foreach ($checksService as $group => $checks) {
@@ -16,7 +16,6 @@ final class RunnerChecksFactory
                 $checkService[sprintf('%s/%s', $group, $check)] = $container->get($serviceName);
             }
         }
-
         return $checkService;
     }
 }

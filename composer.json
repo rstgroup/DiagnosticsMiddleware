@@ -2,6 +2,14 @@
     "name": "rstgroup/diagnostics-middleware",
     "description": "ZendDiagnostics PSR-7 middleware",
     "type": "library",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Witold Wasiczko",
+            "email": "witold.wasiczko@rst.com.pl",
+            "role": "Developer"
+        }
+    ],
     "keywords": [
         "middleware",
         "psr",
@@ -11,6 +19,7 @@
     "require": {
         "php": "^5.5 || ^7.0",
         "zendframework/zenddiagnostics": "^1.0",
+        "container-interop/container-interop": "^1.0",
         "psr/http-message": "^1.0"
     },
     "require-dev": {

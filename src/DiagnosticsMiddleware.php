@@ -2,13 +2,17 @@
 
 namespace RstGroup\DiagnosticsMiddleware;
 
-use Psr\Http\Message\ResponseInterface;
+use Interop\Http\ServerMiddleware\DelegateInterface;
+use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use PhpMiddleware\DoublePassCompatibilityTrait;
 use Psr\Http\Message\ServerRequestInterface;
 use RstGroup\DiagnosticsMiddleware\ResultResponseFactory\ResultResponseFactoryInterface;
 use ZendDiagnostics\Runner\Runner;
 
-final class DiagnosticsMiddleware
+final class DiagnosticsMiddleware implements MiddlewareInterface
 {
+    use DoublePassCompatibilityTrait;
+
     /**
      * @var Runner
      */
@@ -25,7 +29,7 @@ final class DiagnosticsMiddleware
         $this->resultResponseFactory = $resultResponseFactory;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response)
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         $checkName = null;
         $queryParams = $request->getQueryParams();

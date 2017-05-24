@@ -18,6 +18,7 @@ class DiagnosticsMiddlewareTest extends TestCase
     protected $resultResponseFactory;
     protected $request;
     protected $response;
+    protected $next;
     protected $collection;
 
     protected function setUp()
@@ -25,6 +26,7 @@ class DiagnosticsMiddlewareTest extends TestCase
         $this->collection = new Collection();
         $this->request = new ServerRequest();
         $this->response = new Response();
+        $this->next = function(){};
         $this->runner = $this->createMock(Runner::class);
         $this->resultResponseFactory = $this->createMock(ResultResponseFactoryInterface::class);
 
@@ -37,7 +39,7 @@ class DiagnosticsMiddlewareTest extends TestCase
 
         $this->resultResponseFactory->method('createResponse')->willReturn($this->response);
 
-        $finalResponse = $this->middleware->__invoke($this->request, $this->response);
+        $finalResponse = $this->middleware->__invoke($this->request, $this->response, $this->next);
 
         $this->assertInstanceOf(ResponseInterface::class, $finalResponse);
     }
@@ -51,7 +53,7 @@ class DiagnosticsMiddlewareTest extends TestCase
 
         $this->resultResponseFactory->method('createResponse')->with($this->request, $this->collection)->willReturn($responseFromFactory);
 
-        $finalResponse = $this->middleware->__invoke($this->request, $this->response);
+        $finalResponse = $this->middleware->__invoke($this->request, $this->response, $this->next);
 
         $this->assertSame($responseFromFactory, $finalResponse);
     }
@@ -67,7 +69,7 @@ class DiagnosticsMiddlewareTest extends TestCase
 
         $this->resultResponseFactory->method('createResponse')->with($this->request, $this->collection)->willReturn($responseFromFactory);
 
-        $finalResponse = $this->middleware->__invoke($this->request, $this->response);
+        $finalResponse = $this->middleware->__invoke($this->request, $this->response, $this->next);
 
         $this->assertSame($responseFromFactory, $finalResponse);
     }
@@ -83,7 +85,7 @@ class DiagnosticsMiddlewareTest extends TestCase
 
         $this->resultResponseFactory->method('createResponse')->with($this->request, $this->collection)->willReturn($responseFromFactory);
 
-        $finalResponse = $this->middleware->__invoke($this->request, $this->response);
+        $finalResponse = $this->middleware->__invoke($this->request, $this->response, $this->next);
 
         $this->assertSame($responseFromFactory, $finalResponse);
     }

@@ -2,7 +2,7 @@
 
 namespace RstGroup\DiagnosticsMiddleware\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use RstGroup\DiagnosticsMiddleware\DiagnosticsMiddleware;
 use RstGroup\DiagnosticsMiddleware\ResultResponseFactory\ResultResponseFactoryInterface;
@@ -11,7 +11,7 @@ use Zend\Diactoros\ServerRequest;
 use ZendDiagnostics\Result\Collection;
 use ZendDiagnostics\Runner\Runner;
 
-class DiagnosticsMiddlewareTest extends PHPUnit_Framework_TestCase
+class DiagnosticsMiddlewareTest extends TestCase
 {
     protected $middleware;
     protected $runner;
@@ -25,8 +25,8 @@ class DiagnosticsMiddlewareTest extends PHPUnit_Framework_TestCase
         $this->collection = new Collection();
         $this->request = new ServerRequest();
         $this->response = new Response();
-        $this->runner = $this->getMock(Runner::class);
-        $this->resultResponseFactory = $this->getMock(ResultResponseFactoryInterface::class);
+        $this->runner = $this->createMock(Runner::class);
+        $this->resultResponseFactory = $this->createMock(ResultResponseFactoryInterface::class);
 
         $this->middleware = new DiagnosticsMiddleware($this->runner, $this->resultResponseFactory);
     }

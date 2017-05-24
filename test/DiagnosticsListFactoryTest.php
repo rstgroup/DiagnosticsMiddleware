@@ -2,17 +2,19 @@
 
 namespace RstGroup\DiagnosticsMiddleware\Test;
 
-use PHPUnit_Framework_TestCase;
+use Psr\Container\ContainerInterface;
+use PHPUnit\Framework\TestCase;
+use RstGroup\DiagnosticsMiddleware\DiagnosticsListFactory;
 
-class DiagnosticsListFactoryTest extends PHPUnit_Framework_TestCase
+class DiagnosticsListFactoryTest extends TestCase
 {
     protected $factory;
     protected $container;
 
     protected function setUp()
     {
-        $this->factory = new \RstGroup\DiagnosticsMiddleware\DiagnosticsListFactory();
-        $this->container = $this->getMock(\Interop\Container\ContainerInterface::class);
+        $this->factory = new DiagnosticsListFactory();
+        $this->container = $this->createMock(ContainerInterface::class);
     }
 
     public function testCreateList()

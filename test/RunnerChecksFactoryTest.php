@@ -2,12 +2,12 @@
 
 namespace RstGroup\DiagnosticsMiddleware\Test;
 
-use Interop\Container\ContainerInterface;
-use PHPUnit_Framework_TestCase;
+use Psr\Container\ContainerInterface;
+use PHPUnit\Framework\TestCase;
 use RstGroup\DiagnosticsMiddleware\RunnerChecksFactory;
 use ZendDiagnostics\Check\CheckInterface;
 
-class RunnerChecksFactoryTest extends PHPUnit_Framework_TestCase
+class RunnerChecksFactoryTest extends TestCase
 {
     protected $factory;
     protected $container;
@@ -16,7 +16,7 @@ class RunnerChecksFactoryTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->factory = new RunnerChecksFactory();
-        $this->container = $this->getMock(ContainerInterface::class);
+        $this->container = $this->createMock(ContainerInterface::class);
     }
 
     public function testEmptyList()
@@ -37,7 +37,7 @@ class RunnerChecksFactoryTest extends PHPUnit_Framework_TestCase
             ]
         ]);
 
-        $check = $this->getMock(CheckInterface::class);
+        $check = $this->createMock(CheckInterface::class);
 
         $this->containerCall[] = ['service-name', $check];
         $this->containerCall[] = ['other-service-name', $check];

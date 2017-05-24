@@ -2,7 +2,7 @@
 
 namespace RstGroup\DiagnosticsMiddleware;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use ZendDiagnostics\Runner\Runner;
 
 final class RunnerFactory

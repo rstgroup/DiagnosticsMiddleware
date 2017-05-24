@@ -2,10 +2,10 @@
 
 namespace RstGroup\DiagnosticsMiddleware\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use RstGroup\DiagnosticsMiddleware\ConfigProvider;
 
-class ConfigProviderTest extends PHPUnit_Framework_TestCase
+class ConfigProviderTest extends TestCase
 {
     protected $provider;
 

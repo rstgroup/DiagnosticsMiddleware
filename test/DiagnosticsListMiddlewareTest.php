@@ -2,10 +2,10 @@
 
 namespace RstGroup\DiagnosticsMiddleware\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use RstGroup\DiagnosticsMiddleware\DiagnosticsListMiddleware;
 
-class DiagnosticsListMiddlewareTest extends PHPUnit_Framework_TestCase
+class DiagnosticsListMiddlewareTest extends TestCase
 {
     public function testGetList()
     {

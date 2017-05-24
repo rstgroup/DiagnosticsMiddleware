@@ -2,18 +2,18 @@
 
 namespace RstGroup\DiagnosticsMiddleware\Test;
 
-use Interop\Container\ContainerInterface;
-use PHPUnit_Framework_TestCase;
+use Psr\Container\ContainerInterface;
+use PHPUnit\Framework\TestCase;
 use RstGroup\DiagnosticsMiddleware\RunnerFactory;
 use ZendDiagnostics\Runner\Runner;
 
-class RunnerFactoryTest extends PHPUnit_Framework_TestCase
+class RunnerFactoryTest extends TestCase
 {
     public function testGetInstance()
     {
         $factory = new RunnerFactory();
 
-        $container = $this->getMock(ContainerInterface::class);
+        $container = $this->createMock(ContainerInterface::class);
 
         $runner = $factory($container);
 

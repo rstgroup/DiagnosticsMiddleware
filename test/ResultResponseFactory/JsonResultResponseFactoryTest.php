@@ -2,7 +2,7 @@
 
 namespace RstGroup\DiagnosticsMiddleware\Test\ResultResponseFactory;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use RstGroup\DiagnosticsMiddleware\ResultResponseFactory\JsonResultResponseFactory;
 use Zend\Diactoros\ServerRequest;
@@ -11,7 +11,7 @@ use ZendDiagnostics\Result\Collection;
 use ZendDiagnostics\Result\Failure;
 use ZendDiagnostics\Result\Success;
 
-class JsonResultResponseFactoryTest extends PHPUnit_Framework_TestCase
+class JsonResultResponseFactoryTest extends TestCase
 {
     protected $resultResponseFactory;
 
@@ -46,7 +46,7 @@ class JsonResultResponseFactoryTest extends PHPUnit_Framework_TestCase
     public function testReturnFilledPassedCollection()
     {
         $collection = new Collection();
-        $check = $this->getMock(CheckInterface::class);
+        $check = $this->createMock(CheckInterface::class);
         $check->method('getLabel')->willReturn('Foo');
 
         $collection[$check] = new Success('Boo');
@@ -61,10 +61,10 @@ class JsonResultResponseFactoryTest extends PHPUnit_Framework_TestCase
     public function testReturnFilledPassedAndFailureCollection()
     {
         $collection = new Collection();
-        $checkPass = $this->getMock(CheckInterface::class);
+        $checkPass = $this->createMock(CheckInterface::class);
         $checkPass->method('getLabel')->willReturn('Foo');
 
-        $checkFailure = $this->getMock(CheckInterface::class);
+        $checkFailure = $this->createMock(CheckInterface::class);
         $checkFailure->method('getLabel')->willReturn('Baz');
 
         $collection[$checkPass] = new Success('Boo');

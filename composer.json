@@ -17,14 +17,14 @@
         "diagnostic"
     ],
     "require": {
-        "php": "^5.5 || ^7.0",
+        "php": ">=5.6",
         "zendframework/zenddiagnostics": "^1.0",
-        "container-interop/container-interop": "^1.0",
+        "psr/container": "^1.0",
         "psr/http-message": "^1.0",
         "zendframework/zend-diactoros": "^1.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8 || ^5.0"
+        "phpunit/phpunit": "^5.6 || ^6.0"
     },
     "autoload": {
         "psr-4": {

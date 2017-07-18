@@ -2,10 +2,16 @@
 
 namespace RstGroup\DiagnosticsMiddleware;
 
+use Interop\Http\ServerMiddleware\DelegateInterface;
+use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use PhpMiddleware\DoublePassCompatibilityTrait;
+use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\JsonResponse;
 
-final class DiagnosticsListMiddleware
+final class DiagnosticsListMiddleware implements MiddlewareInterface
 {
+    use DoublePassCompatibilityTrait;
+
     /**
      * @var array
      */
@@ -16,10 +22,7 @@ final class DiagnosticsListMiddleware
         $this->list = $list;
     }
 
-    /**
-     * @return JsonResponse
-     */
-    public function __invoke()
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         return new JsonResponse($this->list);
     }
